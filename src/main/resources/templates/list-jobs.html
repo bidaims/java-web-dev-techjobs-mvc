@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
+<html xmlns:c="http://java.sun.com/jsp/jstl/core">
 <head th:replace="fragments :: head">
 </head>
 <body>
@@ -12,14 +13,38 @@
 
     <!-- TODO #1 - Use a loop to display job results in a table. -->
     <table class>
-    <tr>
+        <tr>
         <th:block th:each="job : ${allJobs}">
-            <th th:text = "${allJobs.column}"></th>
+           <th th:text = "${allJobs.column}"></th>
         </th:block>
-    </tr>
+
+            <th>ID</th>
+            <th>Name</th>
+            <th>Employer</th>
+            <th>Location</th>
+            <th>Position Type</th>
+            <th>Core Competency</th>
+
+            <tr th:each="job : ${jobs}">
+
+            <th th:text = "${job.Id}"></th>
+            <th th:text = "${job.Name}"></th>
+            <th th:text = "${job.employer}"></th>
+            <th th:text = "${job.location}"></th>
+            <th th:text = "${job.positionType}"></th>
+            <th th:text = "${job.coreCompetency}"></th>
+            </tr>
+        </tr>
+
     </table>
     <!-- my code ends here -->
-
+    <!--td th:each="category : ${tableChoices}">
+        <ul>
+            <li th:each="item : ${category.value}">
+                <a th:href="@{/list/jobs(column=${category.key},value=${item})}" th:text="${item}"></a>
+            </li>
+        </ul>
+    </td-->
 </div>
 
 </body>
